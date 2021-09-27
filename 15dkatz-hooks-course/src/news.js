@@ -4,10 +4,10 @@ import { useFetch } from './hooks';
 function News() {
   const news = useFetch(
     'https://inshortsapi.vercel.app/news?category=science',
-    {}
+    { data: [] }
   );
 
-  console.log(news);
+  // console.log(news);
 
   return (
     <div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import News from './news';
+import Tasks from './Tasks';
 
 function App() {
   const [userQuery, setUserQuery] = useState('');
@@ -7,6 +8,8 @@ function App() {
   const updateUserQuery = (event) => {
     event.preventDefault();
     setUserQuery(event.target.value);
+    console.log(userQuery);
+    // console.log({ userQuery, 'event.target.value': event.target.value });
   };
 
   const searchQuery = () => {
@@ -14,11 +17,13 @@ function App() {
   };
   return (
     <div className='App'>
-      <h1>Hello Kingsley</h1>
+      <h1>{userQuery || 'Hello Kingsley'}</h1>
       <form className='form' onSubmit={searchQuery}>
         <input type='text' onChange={updateUserQuery} value={userQuery} />
         <button onClick={searchQuery}>Search</button>
       </form>
+      <hr />
+      <Tasks />
       <hr />
       <News />
     </div>

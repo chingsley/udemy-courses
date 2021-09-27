@@ -6,6 +6,7 @@ export const useFetch = (url, initialValue) => {
   useEffect(() => {
     fetch(url)
       .then((response) => {
+        console.log('make the call...');
         return response.json();
       })
       .then((json) => {

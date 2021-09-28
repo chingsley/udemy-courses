@@ -7,7 +7,7 @@ function News() {
     { data: [] }
   );
 
-  // console.log(news);
+  // // console.log(news);
 
   return (
     <div>

@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PICTURES from './data/pictures';
+import { useDynamicTransition } from './hooks';
 console.log('PICTURES.length: ', PICTURES.length);
 
 const SECONDS = 1000;
 
 function Gallery() {
-  const [index, setIndex] = useState(0);
   const [delay, setDelay] = useState(3 * SECONDS);
   const [increment, setIncrement] = useState(1);
+
+  const index = useDynamicTransition({
+    delay,
+    increment,
+    picsLength: PICTURES.length,
+  });
 
   const updateDelay = (event) => {
     const numValue = Number(event.target.value);
@@ -18,20 +24,6 @@ function Gallery() {
     const newIncr = Number(event.target.value);
     newIncr > 0 && setIncrement(newIncr);
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prevIndex) => {
-        return (prevIndex + increment) % PICTURES.length;
-      });
-    }, delay);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [delay, increment]);
-
-  console.log('PICTURES[index]: ', PICTURES[index]);
 
   return (
     <div className='Gallery'>

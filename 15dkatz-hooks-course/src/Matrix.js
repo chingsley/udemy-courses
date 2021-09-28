@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MATRIX_FRAMES from './data/matrix';
+import { useDynamicTransition } from './hooks';
 
 const SECONDS = 1000;
 const minimumDelay = 0.01 * SECONDS; // 10 milliseconds;
 const minimumIncrement = 1;
 
 function Matrix() {
-  const [index, setIndex] = useState(0);
-  const [delay, setDelay] = useState(500);
+  const [delay, setDelay] = useState(50);
   const [increment, setIncrement] = useState(1);
+
+  const index = useDynamicTransition({
+    delay,
+    increment,
+    picsLength: MATRIX_FRAMES.length,
+  });
 
   const updateDelay = (event) => {
     const inputDelay = Number(event.target.value) * SECONDS;
@@ -22,15 +28,6 @@ function Matrix() {
     );
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex(
-        (storedIndex) => (storedIndex + increment) % MATRIX_FRAMES.length
-      );
-    }, delay);
-
-    return () => clearInterval(interval);
-  }, [delay, increment]);
   return (
     <div className='Matrix'>
       <img src={MATRIX_FRAMES[index]} alt='matrix-animarion' />

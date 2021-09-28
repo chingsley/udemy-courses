@@ -38,9 +38,11 @@ function Gallery() {
       <img src={PICTURES[index].image} alt='gallery' />
       <div className='multiform'>
         <div>
-          Gallery transition delay (seconds) Delay:{' '}
-          <input type='number' value={delay / SECONDS} onChange={updateDelay} />{' '}
-          Increment
+          Gallery transition delay (seconds)
+          <input type='number' value={delay / SECONDS} onChange={updateDelay} />
+        </div>
+        <div>
+          Gallery transition Increment (min 1):{' '}
           <input type='number' value={increment} onChange={updateIncrement} />
         </div>
       </div>

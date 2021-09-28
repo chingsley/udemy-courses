@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Gallery from './Gallery';
 import News from './news';
 import Tasks from './Tasks';
+import Matrix from './Matrix';
 
 function App() {
   const [userQuery, setUserQuery] = useState('');
@@ -30,6 +31,8 @@ function App() {
       </form>
       <hr />
       <Tasks />
+      <hr />
+      <Matrix />
       <hr />
       <div>
         {showGallery ? <Gallery /> : null}{' '}

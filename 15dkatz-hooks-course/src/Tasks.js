@@ -16,6 +16,7 @@ const getStoredTasks = () => {
 function Tasks() {
   const [taskText, setTaskText] = useState('');
   const initalTasks = getStoredTasks();
+
   const [tasks, setTasks] = useState(initalTasks.tasks);
   const [completedTasks, setCompletedTasks] = useState(
     initalTasks.completedTasks
@@ -47,8 +48,8 @@ function Tasks() {
     );
   };
 
-  console.log('tasks: ', tasks);
-  console.log('completedTasks: ', completedTasks);
+  // console.log('tasks: ', tasks);
+  // console.log('completedTasks: ', completedTasks);
 
   useEffect(() => {
     storeTasks({ tasks, completedTasks });

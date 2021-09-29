@@ -1,20 +1,19 @@
-import { useReducer } from 'react';
-import Context from './context';
-import reducer, { initialState } from './state/reducer';
 import PublicMessage from './contextComponents/PublicMessage';
 import MessageBoard from './contextComponents/MessageBoard';
+import { StoreProvider } from './contexts/StoreContext';
+import { LoggerProvider } from './contexts/LoggerContext';
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
-    <Context.Provider value={{ state, dispatch }}>
-      <h2>Reaction</h2>
-      <hr />
-      <PublicMessage />
-      <hr />
-      <MessageBoard />
-    </Context.Provider>
+    <StoreProvider>
+      <LoggerProvider>
+        <h2>Reaction</h2>
+        <hr />
+        <PublicMessage />
+        <hr />
+        <MessageBoard />
+      </LoggerProvider>
+    </StoreProvider>
   );
 }
 

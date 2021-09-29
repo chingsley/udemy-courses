@@ -2,12 +2,12 @@ import React from 'react';
 
 // import { useContext } from 'react';
 // import Context from '../context';
-import { useAppContext } from '../customHooks';
+import useStoreContext from '../customHooks/useStoreContext';
 
 function MessageBoard() {
   const {
     state: { messages },
-  } = useAppContext();
+  } = useStoreContext();
 
   return (
     <div>

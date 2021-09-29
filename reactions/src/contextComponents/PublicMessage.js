@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { newMessage } from '../state/actions';
 
-// import { useContext } from 'react';
-// import Context from '../context';
-import { useAppContext } from '../customHooks';
+import useStoreContext from '../customHooks/useStoreContext';
+import useLoggerContext from '../customHooks/useLoggerContext';
 
 function PublicMessage() {
-  const { dispatch } = useAppContext();
+  const { dispatch } = useStoreContext();
+  const { log } = useLoggerContext();
+  log('testing.....');
   const [text, setText] = useState('');
 
   const publishMessage = () => {

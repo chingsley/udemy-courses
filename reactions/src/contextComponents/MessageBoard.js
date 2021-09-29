@@ -3,6 +3,7 @@ import React from 'react';
 // import { useContext } from 'react';
 // import Context from '../context';
 import { useAppContext } from '../customHooks';
+import CreateReaction from './CreateReaction';
 
 function MessageBoard() {
   const {
@@ -18,6 +19,8 @@ function MessageBoard() {
             <h4>{new Date(timestamp).toLocaleDateString()}</h4>
             <p>{text}</p>
             <h4>- {username}</h4>
+            <CreateReaction messageId={id} />
+            <hr />
           </div>
         );
       })}

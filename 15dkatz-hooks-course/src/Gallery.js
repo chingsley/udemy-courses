@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PICTURES from './data/pictures';
 import { useDynamicTransition } from './hooks';
-console.log('PICTURES.length: ', PICTURES.length);
 
 const SECONDS = 1000;
 

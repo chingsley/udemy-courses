@@ -6,18 +6,18 @@ import { REACTION_OBJECTS } from '../state/types';
 function CreateReaction({ messageId }) {
   const {
     state: { username },
-    dispatch,
+    pubsub: { publish },
   } = useAppContext();
 
-  const addReaction =
+  const publishReaction =
     ({ emoji, type }) =>
     () => {
-      dispatch(createReaction({ messageId, emoji, type, username }));
+      publish(createReaction({ messageId, emoji, type, username }));
     };
   return (
     <div className='CreateReaction'>
       {REACTION_OBJECTS.map(({ type, emoji }) => (
-        <span key={type} onClick={addReaction({ emoji, type })}>
+        <span key={type} onClick={publishReaction({ emoji, type })}>
           {emoji}
         </span>
       ))}

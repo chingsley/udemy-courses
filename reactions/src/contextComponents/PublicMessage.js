@@ -5,16 +5,16 @@ import { newMessage } from '../state/actions';
 // import Context from '../context';
 import { useAppContext } from '../customHooks';
 
-function PublicMessage() {
+function PublishMessage() {
   const {
     state: { username },
-    dispatch,
+    pubsub: { publish },
   } = useAppContext();
   const [text, setText] = useState('');
 
   const publishMessage = () => {
     if (text) {
-      dispatch(newMessage({ text, username }));
+      publish(newMessage({ text, username }));
       setText('');
     }
   };
@@ -39,4 +39,4 @@ function PublicMessage() {
   );
 }
 
-export default PublicMessage;
+export default PublishMessage;

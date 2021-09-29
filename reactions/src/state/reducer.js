@@ -6,14 +6,6 @@ export const initialState = {
   reactionsMap: {},
 };
 
-/**
- * {
- *  reactionsMap: {
- *    '123-abc-2902902': [{}, {}]
- * }
- * }
- */
-
 const REACTION_TYPES = REACTION_OBJECTS.map(({ type }) => type);
 
 const reducer = (state, action) => {

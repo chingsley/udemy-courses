@@ -6,12 +6,15 @@ import { newMessage } from '../state/actions';
 import { useAppContext } from '../customHooks';
 
 function PublicMessage() {
-  const { dispatch } = useAppContext();
+  const {
+    state: { username },
+    dispatch,
+  } = useAppContext();
   const [text, setText] = useState('');
 
   const publishMessage = () => {
     if (text) {
-      dispatch(newMessage(text));
+      dispatch(newMessage({ text, username }));
       setText('');
     }
   };

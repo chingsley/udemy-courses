@@ -10,3 +10,8 @@ export const setUsername = (username) => ({
   type: SET_USERNAME,
   username,
 });
+
+export const createReaction = ({ messageId, emoji, type, username }) => ({
+  type,
+  item: { id: uuid(), emoji, messageId, username, timestamp: Date.now() },
+});

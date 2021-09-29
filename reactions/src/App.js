@@ -3,6 +3,8 @@ import reducer, { initialState } from './state/reducer';
 import PublicMessage from './components/PublicMessage';
 import MessageBoard from './components/MessageBoard';
 
+import './pubsub';
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log(state);
